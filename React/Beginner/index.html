@@ -3,12 +3,13 @@
   <body>
     <div id="root"></div>
   </body>
-  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function Btn({ text }) {
-      console.log({ text });
+    function Btn({ text, fontSize }) {
+      console.log(text, "was rendered");
       return (
         <button
           style={{
@@ -17,19 +18,25 @@
             padding: "10px 20px",
             border: 0,
             borderRadius: 10,
-            fontSize: 16,
+            fontSize,
           }}
         >
           {text}
         </button>
       );
     }
+    Btn.propTypes = {
+      text: PropTypes.string,
+      fontSize: PropTypes.number,
+    };
     function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
       return (
         // 이게 함수형 컴포넌트:기능만가진
         <div>
-          <Btn text="sa ve changes" />
-          <Btn text="continue" />
+          <Btn text="save changes" fontSize={18} />
+          <Btn fontSize={14} text={"continue"} />
         </div>
       );
     }
