@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function Btn({ text, fontSize }) {
+    function Btn({ text, fontSize  }) {
       console.log(text, "was rendered");
       return (
         <button
@@ -36,7 +36,7 @@
         // 이게 함수형 컴포넌트:기능만가진
         <div>
           <Btn text="save changes" fontSize={18} />
-          <Btn fontSize={14} text={"continue"} />
+          <Btn fontSize={14} text={"continue"} /> 
         </div>
       );
     }
